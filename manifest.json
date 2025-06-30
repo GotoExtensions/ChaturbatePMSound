@@ -1,0 +1,37 @@
+{
+	"manifest_version": 3,
+	"name": "Chaturbate PM sound",
+	"version": "1",
+
+	"description": "adds pm sound",
+
+	"icons": {
+		"48": "icon/48.png"
+	},
+
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "cbPMsound@cbfilter.de"
+		}
+	},
+
+	"permissions": ["storage", "tabs"],
+
+	"action": {
+		"default_popup": "popup.html"
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["*://chaturbate.com/b/*", "*://chaturbate.eu/*"],
+			"js": ["content.js"],
+			"run_at": "document_idle"
+		}
+	],
+	"web_accessible_resources": [
+		{
+			"resources": ["resource/*.mp3", "CustomFileHelper.html"],
+			"matches": ["<all_urls>"]
+		}
+	]
+}
