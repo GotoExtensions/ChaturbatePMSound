@@ -8,7 +8,6 @@ const soundFile = browser.runtime.getURL("resource/pop-alert.mp3");
 const pmSound = new Audio(soundFile);
 
 function checkSetting(storage) {
-	console.log(storage);
 	if (storage.on === undefined) {
 		browser.storage.local.set({ on: true });
 		soundEnabled = true;
@@ -49,7 +48,6 @@ const observer = new MutationObserver(function (mutations) {
 			AddButtons(usrName, mutation.addedNodes[0]);
 			if (mutations.length <= 3 && mutation.addedNodes[0].classList.contains("unreadBg") && !muteNameList.includes(usrName)) playNotificationSound();
 		}
-		console.log(mutation);
 	}
 });
 
@@ -426,7 +424,6 @@ const deleteIcon = customSoundButton.querySelector(".delete-icon");
 const customOption = soundSelector.querySelector("#pmCustomSelect");
 
 function updateCustomSoundUI(soundName = null) {
-	console.log("CUSTOM OPTION:" + customOption);
 	if (soundName) {
 		buttonText.textContent = soundName;
 		customSoundButton.classList.add("has-custom-sound");
